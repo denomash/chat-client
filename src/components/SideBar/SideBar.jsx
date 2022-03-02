@@ -1,13 +1,14 @@
 import { useState } from "react";
-import {
-  Box,
-  Button,
-  Tab,
-  Typography,
-  Tabs,
-} from "@mui/material";
+import { Box, Button, Tab, Typography, Tabs } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
+
+// Hooks
 import { useConversations } from "../../contexts/ConversationsProvider";
+
+// Styles
+import { useStyles } from "./styles";
+
+// Components
 import NewConversationMadal from "../NewConversationMadal";
 
 export const SideBar = ({ username }) => {
@@ -16,6 +17,8 @@ export const SideBar = ({ username }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const [value1, setValue1] = useState(0);
+
+  const classes = useStyles();
 
   const handleChange1 = (event, newValue) => {
     setValue1(newValue);
@@ -45,10 +48,8 @@ export const SideBar = ({ username }) => {
   return (
     <>
       <Box
-        width={250}
-        display="flex"
-        flexDirection="column"
-        style={{ borderRight: "solid 2px", borderColor: "gray" }}
+        style={{ borderRight: "solid 2px", borderColor: "#1976d2" }}
+        className={classes.root}
       >
         <Box sx={{ width: "100%", typography: "body1" }} flexGrow={1}>
           <TabContext value={value}>
@@ -74,7 +75,6 @@ export const SideBar = ({ username }) => {
               >
                 <Tabs
                   orientation="vertical"
-                  // variant="scrollable"
                   value={value1}
                   onChange={handleChange1}
                   aria-label="Conversations"
@@ -105,7 +105,7 @@ export const SideBar = ({ username }) => {
         {/* Logged in user details */}
         <Box display="flex" flexDirection="column" padding={1}>
           <Box display="flex" alignItems="center">
-            <Typography variant="h6">Your username:</Typography>
+            <Typography className={classes.userInfo}>Your username:</Typography>
             <Typography marginLeft={1} color="grey">
               {username}
             </Typography>

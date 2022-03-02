@@ -5,7 +5,7 @@ const SocketContext = React.createContext();
 
 const useSocket = () => useContext(SocketContext);
 
-const ENDPOINT = "localhost:5000";
+const ENDPOINT = process.env.REACT_APP_URL;
 
 const SocketProvider = ({ username, children }) => {
   const [socket, setSocket] = useState();
