@@ -14,8 +14,6 @@ const usePersistData = (key, initialValue) => {
     if (typeof initialValue === "function") {
       return initialValue();
     } else {
-      console.log({ initialValue });
-
       return initialValue;
     }
   });

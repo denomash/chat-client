@@ -1,50 +1,56 @@
 import { useState } from "react";
-import { Box, Button, Tab, Typography, Modal, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  Tab,
+  Typography,
+  Tabs,
+} from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { useConversations } from "../../contexts/ConversationsProvider";
+import NewConversationMadal from "../NewConversationMadal";
 
 export const SideBar = ({ username }) => {
   const [value, setValue] = useState("1");
   const [chatBuddy, setChatBuddy] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
 
+  const [value1, setValue1] = useState(0);
+
+  const handleChange1 = (event, newValue) => {
+    setValue1(newValue);
+  };
+
   const handleChange = (event, newValue) => {
-    console.log({ newValue }, event.target.value);
     setValue(newValue);
   };
 
   const handleClose = () => setModalOpen(false);
 
-  const { createConversations } = useConversations();
+  const { conversations, createConversations, selectConversationIndex } =
+    useConversations();
 
   const handleCreateConversation = () => {
-    console.log("<<<< CREATE CONVO >>>>", chatBuddy);
-    createConversations({ username: chatBuddy });
+    createConversations([{ username: chatBuddy }, { username }]);
     handleClose();
   };
 
-  const { conversations } = useConversations();
-
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
+  function a11yProps(index) {
+    return {
+      id: `vertical-tab-${index}`,
+      "aria-controls": `vertical-tabpanel-${index}`,
+    };
+  }
 
   return (
     <>
       <Box
         width={250}
-        height="100%"
+        display="flex"
+        flexDirection="column"
         style={{ borderRight: "solid 2px", borderColor: "gray" }}
       >
-        <Box sx={{ width: "100%", height: "90%", typography: "body1" }}>
+        <Box sx={{ width: "100%", typography: "body1" }} flexGrow={1}>
           <TabContext value={value}>
             <Box
               sx={{
@@ -54,20 +60,49 @@ export const SideBar = ({ username }) => {
             >
               <TabList onChange={handleChange} aria-label="Chat">
                 <Tab label="Conversations" value="1" style={{ width: 250 }} />
-                {/* <Tab label="Item Two" value="2" />
-              <Tab label="Item Three" value="3" /> */}
               </TabList>
             </Box>
-            <TabPanel value="1">
-              {conversations.map((convo, i) => (
-                <div>{convo.recepient.username}</div>
-              ))}
+
+            {/* List Conversations */}
+            <TabPanel value="1" style={{ padding: 0 }}>
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  bgcolor: "background.paper",
+                  display: "flex",
+                }}
+              >
+                <Tabs
+                  orientation="vertical"
+                  // variant="scrollable"
+                  value={value1}
+                  onChange={handleChange1}
+                  aria-label="Conversations"
+                  sx={{ borderRight: 1, borderColor: "divider", width: "100%" }}
+                >
+                  {conversations.map((convo, i) => {
+                    const names = convo.recipients.map(
+                      (recipient) => recipient.username
+                    );
+
+                    const name = names.find((n) => n !== username);
+
+                    return (
+                      <Tab
+                        key={i}
+                        label={name}
+                        {...a11yProps(i)}
+                        onClick={() => selectConversationIndex(i)}
+                      />
+                    );
+                  })}
+                </Tabs>
+              </Box>
             </TabPanel>
-            {/* <TabPanel value="2">Item Two</TabPanel>
-          <TabPanel value="3">Item Three</TabPanel> */}
           </TabContext>
         </Box>
 
+        {/* Logged in user details */}
         <Box display="flex" flexDirection="column" padding={1}>
           <Box display="flex" alignItems="center">
             <Typography variant="h6">Your username:</Typography>
@@ -86,35 +121,14 @@ export const SideBar = ({ username }) => {
         </Box>
       </Box>
 
-      <Modal
-        open={modalOpen}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Enter username of the user you wish to chat
-          </Typography>
-          <TextField
-            id="filled-basic"
-            label="Chat buddy"
-            variant="filled"
-            required
-            style={{ width: "100%", marginTop: 20 }}
-            value={chatBuddy}
-            onChange={(e) => setChatBuddy(e.target.value)}
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            style={{ marginTop: 10 }}
-            onClick={handleCreateConversation}
-          >
-            start Conversation
-          </Button>
-        </Box>
-      </Modal>
+      {/* New Conversation modal */}
+      <NewConversationMadal
+        chatBuddy={chatBuddy}
+        modalOpen={modalOpen}
+        handleClose={handleClose}
+        setChatBuddy={setChatBuddy}
+        handleCreateConversation={handleCreateConversation}
+      />
     </>
   );
 };

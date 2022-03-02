@@ -1,7 +1,5 @@
 import { useState } from "react";
-// import history from "history";
 import { useHistory } from "react-router-dom";
-
 import {
   Container,
   Box,
@@ -11,28 +9,21 @@ import {
   Button,
   FormControl,
 } from "@mui/material";
-import usePersistData from "../../hooks/usePersistData";
+
 
 const Login = () => {
   const history = useHistory();
 
   const [username, setUserName] = useState("");
-  const [usernameKey, setUserNameKey] = usePersistData("username");
 
   const handleLogin = async () => {
     if (!username) return;
-    setUserNameKey(username);
 
-    await new Promise((resolve) => {
-      setTimeout(resolve, 2000);
-    });
-
-    history.push("/chat");
+    history.push(`/chat?id=${username}`);
   };
 
   return (
     <Container maxWidth="sm">
-      {usernameKey}
       <Box
         height="100vh"
         width="100%"
