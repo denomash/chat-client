@@ -31,7 +31,7 @@ const Login = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <Box display="flex" flexDirection="column">
+        <Box display="flex" flexDirection="column" width="55%">
           <Box style={{ textAlign: "center" }}>
             <Typography variant="h3" fontWeight={500}>
               Login

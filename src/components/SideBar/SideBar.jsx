@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Button, Tab, Typography, Tabs } from "@mui/material";
+import { Box, Button, Tab, Typography, Tabs, Avatar } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 
 // Hooks
@@ -10,6 +10,32 @@ import { useStyles } from "./styles";
 
 // Components
 import NewConversationMadal from "../NewConversationMadal";
+
+export const stringToColor = (string) => {
+  let hash = 0;
+  let i;
+
+  /* eslint-disable no-bitwise */
+  for (i = 0; i < string.length; i += 1) {
+    hash = string.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  let color = "#";
+
+  for (i = 0; i < 3; i += 1) {
+    const value = (hash >> (i * 8)) & 0xff;
+    color += `00${value.toString(16)}`.substr(-2);
+  }
+  /* eslint-enable no-bitwise */
+
+  return color;
+};
+
+export const stringAvatar = (name) => {
+  return {
+    children: `${name.split("")[0]}${name.split("")[1]}`,
+  };
+};
 
 export const SideBar = ({ username }) => {
   const [value, setValue] = useState("1");
@@ -37,13 +63,6 @@ export const SideBar = ({ username }) => {
     createConversations([{ username: chatBuddy }, { username }]);
     handleClose();
   };
-
-  function a11yProps(index) {
-    return {
-      id: `vertical-tab-${index}`,
-      "aria-controls": `vertical-tabpanel-${index}`,
-    };
-  }
 
   return (
     <>
@@ -90,9 +109,26 @@ export const SideBar = ({ username }) => {
                     return (
                       <Tab
                         key={i}
+                        icon={
+                          <Avatar
+                            {...stringAvatar(name)}
+                            sx={{
+                              width: 40,
+                              height: 40,
+                              marginRight: 20,
+                              bgcolor: stringToColor(name),
+                            }}
+                            style={{ marginRight: 20 }}
+                          />
+                        }
+                        iconPosition="start"
                         label={name}
-                        {...a11yProps(i)}
                         onClick={() => selectConversationIndex(i)}
+                        style={{
+                          display: "flex",
+                          justifyContent: "start",
+                          borderBottom: "solid 1px #1976d269",
+                        }}
                       />
                     );
                   })}
