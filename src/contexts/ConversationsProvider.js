@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import usePersistData from "../hooks/usePersistData";
 import { useSocket } from "./SocketProvider";
 
-const ConversationsContext = React.createContext();
+export const ConversationsContext = React.createContext();
 
 const useConversations = () => {
   return useContext(ConversationsContext);

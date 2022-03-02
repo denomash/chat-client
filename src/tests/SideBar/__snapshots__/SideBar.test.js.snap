@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly when there are no items 1`] = `
+<div
+  className="sc-gsDKAQ makeStyles-root-1 MuiBox-root"
+  style={
+    Object {
+      "borderColor": "#1976d2",
+      "borderRight": "solid 2px",
+    }
+  }
+>
+  <div
+    className="sc-gsDKAQ fpEaOL MuiBox-root"
+  >
+    <div
+      className="sc-gsDKAQ lfLPC MuiBox-root"
+    >
+      <div
+        className="MuiTabs-root-gEPFpJ hpisFx MuiTabs-root"
+      >
+        <div
+          className="MuiTabs-scroller-ezHawR gCPLWN MuiTabs-scroller MuiTabs-fixed"
+          onScroll={[Function]}
+          style={
+            Object {
+              "marginBottom": -0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <div
+            aria-label="Chat"
+            aria-orientation={null}
+            className="MuiTabs-flexContainer-jDclAr ceXBBS MuiTabs-flexContainer"
+            onKeyDown={[Function]}
+            role="tablist"
+          >
+            <button
+              aria-controls={null}
+              aria-selected={true}
+              className="MuiButtonBase-root-KjFju gUleGd MuiButtonBase-root MuiTab-root-bdqkgu isUQNB MuiTab-root MuiTab-textColorPrimary Mui-selected"
+              disabled={false}
+              id={null}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onContextMenu={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              role="tab"
+              style={
+                Object {
+                  "width": 250,
+                }
+              }
+              tabIndex={0}
+              type="button"
+            >
+              Conversations
+              <span
+                className="MuiTabs-indicator-csbZOi eudFOA MuiTabs-indicator"
+                style={Object {}}
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-labelledby={null}
+      className="MuiTabPanel-root-drROWA jcHFQn MuiTabPanel-root"
+      hidden={false}
+      id={null}
+      role="tabpanel"
+      style={
+        Object {
+          "padding": 0,
+        }
+      }
+    >
+      <div
+        className="sc-gsDKAQ iYUFjd MuiBox-root"
+      >
+        <div
+          className="MuiTabs-root-gEPFpJ cdsNmx MuiTabs-root MuiTabs-vertical"
+        >
+          <div
+            className="MuiTabs-scroller-ezHawR gCPLWN MuiTabs-scroller MuiTabs-fixed"
+            onScroll={[Function]}
+            style={
+              Object {
+                "marginRight": -0,
+                "overflow": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Conversations"
+              aria-orientation="vertical"
+              className="MuiTabs-flexContainer-jDclAr jPZrdK MuiTabs-flexContainer MuiTabs-flexContainerVertical"
+              onKeyDown={[Function]}
+              role="tablist"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="sc-gsDKAQ iJVHIA MuiBox-root"
+  >
+    <div
+      className="sc-gsDKAQ dZUCUE MuiBox-root"
+    >
+      <p
+        className="MuiTypography-root-bWKFam fLRtBW MuiTypography-root MuiTypography-body1 makeStyles-userInfo-2"
+      >
+        Your username:
+      </p>
+      <p
+        className="MuiTypography-root-bWKFam XRxud MuiTypography-root MuiTypography-body1"
+      >
+        test
+      </p>
+    </div>
+    <button
+      className="MuiButtonBase-root-KjFju gUleGd MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root MuiButton-root-gygCtr fSFcLn"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "borderRadius": 0,
+          "marginTop": 10,
+          "width": "100%",
+        }
+      }
+      tabIndex={0}
+      type="submit"
+    >
+      New Conversation
+    </button>
+  </div>
+</div>
+`;

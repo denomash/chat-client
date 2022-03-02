@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly when there are no items 1`] = `
+<div
+  className="sc-gsDKAQ makeStyles-root-1 MuiBox-root"
+>
+  <div
+    className="sc-gsDKAQ makeStyles-messagesContainer-2 MuiBox-root"
+  >
+    <div
+      className="sc-gsDKAQ makeStyles-messages-3 MuiBox-root"
+    />
+  </div>
+  <div
+    className="sc-gsDKAQ eXKIQs MuiBox-root"
+  >
+    <textarea
+      className="makeStyles-textArea-6"
+      data-testid="chat-input"
+      onChange={[Function]}
+      placeholder="Type a message"
+      value=""
+    />
+    <button
+      className="MuiButtonBase-root-KjFju gUleGd MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root Mui-disabled MuiButton-root-gygCtr fSFcLn makeStyles-button-7"
+      disabled={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={-1}
+      type="button"
+    >
+      Send
+    </button>
+  </div>
+</div>
+`;

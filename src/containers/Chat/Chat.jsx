@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { Box, Button, TextareaAutosize } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 import { useConversations } from "../../contexts/ConversationsProvider";
 import { useStyles } from "./styles";
@@ -47,6 +47,7 @@ const Chat = ({ username }) => {
                   style={{
                     color: `${message.fromMe ? "#fff" : "#333"}`,
                     background: `${message.fromMe ? "#1976d2" : "#cbcbcb"}`,
+                    borderRadius: `${message.fromMe ? '10px 0 10px 10px' : "0 10px 10px 10px"}`
                   }}
                 >
                   {message.text}
@@ -62,9 +63,8 @@ const Chat = ({ username }) => {
 
       {/* New text message */}
       <Box display="flex">
-        <TextareaAutosize
-          maxRows={4}
-          aria-label="maximum height"
+        <textarea
+          data-testid="chat-input"
           placeholder="Type a message"
           value={text}
           onChange={(e) => setText(e.target.value)}

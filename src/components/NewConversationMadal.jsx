@@ -31,6 +31,7 @@ const NewConversationMadal = ({
         </Typography>
         <TextField
           id="filled-basic"
+          inputProps={{ "data-testid": "start-conversation-input" }}
           label="Chat buddy"
           variant="filled"
           required

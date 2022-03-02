@@ -27,6 +27,7 @@ const Container = ({ id }) => {
 
 export const DashBoard = () => {
   const history = useLocation();
+
   const { id } = queryString.parse(history.search);
 
   return (
